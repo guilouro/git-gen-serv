@@ -1,6 +1,8 @@
 ## Git Generator Files
 ------
+
 Script for generate folders and settings to use git on a local server.
+
 ------
 ####How to use: 
 ```shell
