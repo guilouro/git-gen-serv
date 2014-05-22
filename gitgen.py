@@ -17,7 +17,6 @@ path_gitbare = os.path.abspath('%s/%s' %(dir_project, dir_git_bare))
 path_hooks = os.path.abspath('%s/hooks' %(path_gitbare))
 path_repo = os.path.abspath('%s/%s' %(dir_project, dir_project))
 
-
 d = "*"*40
 print "\n\n\n"
 
@@ -32,21 +31,14 @@ else:
 	print "Erro ao criar diretórios"
 
 # Tenta criar o git --bare init dentro da pasta git do projeto
-# if os.system("cd %s || exit && git --bare init" %(path_gitbare)):
-# 	print "Erro ao criar git bare"
-
-os.chdir(path_gitbare)
-os.system("git --bare init")
-
-os.chdir(path_repo)
-os.system("git init")
-os.system("git remote add origin %s" path_gitbare)
+if os.system("cd %s || exit && git --bare init" %(path_gitbare)):
+	print "Erro ao criar git bare"
 
 # Inicia o git no repositorio e add remote origin
-# if not os.system("cd %s || exit && git init && git remote add origin %s" %(path_repo, path_gitbare) ):
-# 	pass
-# else:
-# 	print "Erro ao criar git e adicionar remote origin"
+if not os.system("cd %s || exit && git init && git remote add origin %s" %(path_repo, path_gitbare) ):
+	pass
+else:
+	print "Erro ao criar git e adicionar remote origin"
 
 # criar post-receive
 postreceive = "\
