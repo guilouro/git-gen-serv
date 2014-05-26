@@ -23,7 +23,7 @@ print "\n\n\n"
 
 # Tenta criar os diretorios
 print "Diretórios do projeto:"
-repook = os.makedirs("%s/%s" %(dir_project, dir_repositorio))
+repook = os.makedirs("%s/%s" %(dir_project, dir_repositorio.split("/")[-1]))
 bareok = os.makedirs("%s/%s" %(dir_project, dir_git_bare))
 if not repook and not bareok:
 	print "\n/%s\n-> /%s \n-> /%s \n\nDiretórios criados com sucesso\n\n%s\n" %(dir_project, dir_git_bare, dir_repositorio, d)
@@ -41,19 +41,23 @@ else:
 	print "Erro ao criar git e adicionar remote origin"
 
 # criar post-receive
+# postreceive = "\
+# #!/bin/bash\n\
+# cd ../%s/ || exit\n\
+# unset GIT_DIR\n\
+# git pull origin master\n\
+# exec git-update-server-info" %dir_repositorio
+# 
 postreceive = "\
 #!/bin/bash\n\
-cd ../%s/ || exit\n\
-unset GIT_DIR\n\
-git pull origin master\n\
-exec git-update-server-info" %dir_repositorio
+GIT_WORK_TREE=../%s git checkout -f" %dir_repositorio.split("/")[-1]
 
 os.chdir(path_hooks)
 with open('post-receive', 'w') as f:
 	f.write(postreceive)
 
-if sys.platform == "linux2":
-	os.chmod('post-receive', 0755)
+# if sys.platform == "linux2":
+	# os.chmod('post-receive', 0755)
 
 print "Repositórios criados com sucesso"
 print "\n\n\n"
