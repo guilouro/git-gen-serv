@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import os, sys
 
@@ -11,7 +11,7 @@ dir_git_bare = 'git'
 # Diretório do repositorio do projeto
 dir_repositorio = dir_project
 
-#paths
+# paths
 path_proj = os.path.abspath('%s' %(dir_project))
 path_gitbare = os.path.abspath('%s/%s' %(dir_project, dir_git_bare))
 path_hooks = os.path.abspath('%s/hooks' %(path_gitbare))
