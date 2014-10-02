@@ -10,3 +10,8 @@ $ git clone https://github.com/guilouro/git-gen-serv.git .
 $ chmod +x gitgen.py
 $ ./gitgen project_name
 ```
+or
+
+```shell
+$ ptyhon gitgen.py project_name
+```
