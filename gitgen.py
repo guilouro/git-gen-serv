@@ -3,62 +3,53 @@
 
 import os, sys
 
-# dir_atual = os.path.abspath('.')
 # Diretório principal do projeto 
 dir_project = os.sys.argv[1]
-# Diretório do git bare
-dir_git_bare = 'git'
-# Diretório do repositorio do projeto
-dir_repositorio = dir_project
-
-#paths
-path_proj = os.path.abspath('%s' %(dir_project))
-path_gitbare = os.path.abspath('%s/%s' %(dir_project, dir_git_bare))
-path_hooks = os.path.abspath('%s/hooks' %(path_gitbare))
-path_repo = os.path.abspath('%s/%s' %(dir_project, dir_project))
-
-d = "*"*40
-print "\n\n\n"
 
 
-# Tenta criar os diretorios
-print "Diretórios do projeto:"
-repook = os.makedirs("%s/%s" %(dir_project, dir_repositorio.split("/")[-1]))
-bareok = os.makedirs("%s/%s" %(dir_project, dir_git_bare))
-if not repook and not bareok:
-	print "\n/%s\n-> /%s \n-> /%s \n\nDiretórios criados com sucesso\n\n%s\n" %(dir_project, dir_git_bare, dir_repositorio, d)
-else:
-	print "Erro ao criar diretórios"
-
-# Tenta criar o git --bare init dentro da pasta git do projeto
-if os.system("cd %s || exit && git --bare init" %(path_gitbare)):
-	print "Erro ao criar git bare"
-
-# Inicia o git no repositorio e add remote origin
-if not os.system("cd %s || exit && git init && git remote add origin %s" %(path_repo, path_gitbare) ):
-	pass
-else:
-	print "Erro ao criar git e adicionar remote origin"
-
-# criar post-receive
-# postreceive = "\
-# #!/bin/bash\n\
-# cd ../%s/ || exit\n\
-# unset GIT_DIR\n\
-# git pull origin master\n\
-# exec git-update-server-info" %dir_repositorio
-# 
 postreceive = "\
 #!/bin/bash\n\
-GIT_WORK_TREE=../%s git checkout -f" %dir_repositorio.split("/")[-1]
+cd ../dev/ || exit\n\
+unset GIT_DIR\n\
+git pull origin master\n\
+exec git-update-server-info"
 
-os.chdir(path_hooks)
+d = "*"*40
+print "\n\n"
+
+git = '%s.git' %(dir_project[0].upper() + dir_project[1:])
+
+# created paths 
+print "Created /dev/"
+if not os.makedirs('dev'):
+	print " --- success"
+
+print "Created /%s/" %git
+if not os.makedirs(git):
+	print " --- success"
+
+paths = {
+	'home': os.path.abspath('.'),
+	'dev' : os.path.abspath('dev'),
+	'git' : os.path.abspath(git),
+}
+
+print "\n"
+
+os.chdir(paths['git'])
+paths['hooks'] = os.path.abspath('hooks')
+
+os.system("git init --bare")
+os.chdir(paths['hooks'])
+
 with open('post-receive', 'w') as f:
 	f.write(postreceive)
 
-# if sys.platform == "linux2":
-	# os.chmod('post-receive', 0755)
+os.chdir(paths['dev'])
+os.system('git init')
 
-print "Repositórios criados com sucesso"
-print "\n\n\n"
+print '\nAdded remote origin in /%s/' %git
+os.system('git remote add origin ../%s/' %git)
+print " --- success"
 
+print "\n\n"
