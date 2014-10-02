@@ -13,5 +13,5 @@ $ ./gitgen project_name
 or
 
 ```shell
-$ ptyhon gitgen.py project_name
+$ python gitgen.py project_name
 ```
