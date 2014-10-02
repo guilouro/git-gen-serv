@@ -1,11 +1,10 @@
 #!/usr/bin/env python
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 import os, sys
 
 # Diretório principal do projeto 
 dir_project = os.sys.argv[1]
-
 
 postreceive = "\
 #!/bin/bash\n\
