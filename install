@@ -4,7 +4,9 @@ read -p "Project name: " name
 
 git clone https://github.com/guilouro/git-gen-serv.git .
 
-rm -rf .git README.md
+rm -rf .git 
+
+rm -rf README.md
 
 python gitgen.py $name
 
