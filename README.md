@@ -4,15 +4,19 @@
 Script for generate folders and settings to use git on a local server.
 
 ------
-####How to use: 
-```shell
-$ git clone https://github.com/guilouro/git-gen-serv.git .
-$ rm -rf .git README.md
-$ chmod +x gitgen.py
-$ ./gitgen project_name
-```
-or
+### How to use: 
 
-```shell
-$ python gitgen.py project_name
+
+#### Instalation
+
+```bash
+$ curl -L https://raw.github.com/guilouro/git-gen-serv/master/install | sh
+# or
+$ git clone https://github.com/guilouro/git-gen-serv.git . && sh install.sh
+
+
+#### How to run
+
+```bash
+$ sh install
 ```
