@@ -1,7 +1,11 @@
 #!/bin/bash 
 
-read -p "Project name: " name
+read -p "\nProject name: " name
+
 git clone https://github.com/guilouro/git-gen-serv.git .
+
 rm -rf .git README.md
+
 python gitgen.py $name
+
 rm -f gitgen.py install
