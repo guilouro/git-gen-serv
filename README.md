@@ -13,6 +13,7 @@ Script for generate folders and settings to use git on a local server.
 $ curl -L https://raw.github.com/guilouro/git-gen-serv/master/install | sh
 # or
 $ git clone https://github.com/guilouro/git-gen-serv.git . && sh install.sh
+```
 
 
 #### How to run
