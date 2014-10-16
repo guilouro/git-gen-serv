@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-read -p "\nProject name: " name
+read -p "Project name: " name
 
 git clone https://github.com/guilouro/git-gen-serv.git .
 
