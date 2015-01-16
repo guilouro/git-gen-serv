@@ -54,13 +54,15 @@ os.system('git remote add origin ../%s/' % git)
 print " --- success"
 
 print "\n\n"
+print "Configure your bitbucket project"
+print "\n\n"
 
 bit = bitbucket.Bitbucket()
 
 print "\n\n"
 
 print '\nAdded remote bitbucket in /%s/' % git
-os.system('git remote add bitbucket ../%s/' % bit.get_url())
+os.system('git remote add bitbucket %s' % bit.get_url())
 print " --- success"
 
 print "\n\n"
