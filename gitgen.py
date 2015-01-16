@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-import getpass
+import bitbucket
 
 # Diretório principal do projeto
 dir_project = os.sys.argv[1]
@@ -13,6 +13,7 @@ cd ../dev/ || exit\n\
 unset GIT_DIR\n\
 git reset --hard HEAD~1\n\
 git pull origin master\n\
+git push bitbucket master\n\
 exec git-update-server-info"
 
 print "\n\n"
@@ -50,6 +51,16 @@ os.system('git init')
 
 print '\nAdded remote origin in /%s/' % git
 os.system('git remote add origin ../%s/' % git)
+print " --- success"
+
+print "\n\n"
+
+bit = bitbucket.Bitbucket()
+
+print "\n\n"
+
+print '\nAdded remote bitbucket in /%s/' % git
+os.system('git remote add bitbucket ../%s/' % bit.get_url())
 print " --- success"
 
 print "\n\n"

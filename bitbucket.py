@@ -4,17 +4,30 @@
 import getpass
 import os
 
-slug = raw_input("Slug (Ex: project-name): ")
-group = raw_input("Bitbucket Group: ")
-user = raw_input("Bitbucket user: ")
-passwd = getpass.getpass("Bitbucket password: ")
+
+class Bitbucket:
+
+    def __init__(self):
+        """
+        Created repositories in bitbucket
+        """
+        self.slug = raw_input("Slug (Ex: project-name): ")
+        self.group = raw_input("Bitbucket Group: ")
+        self.user = raw_input("Bitbucket user: ")
+        self.passwd = getpass.getpass("Bitbucket password: ")
+
+        command = "curl -X POST -u %s:%s -v -H \
+        \"Content-Type: application/json\" \
+        https://api.bitbucket.org/2.0/repositories/%s/%s \
+        -d '{\"scm\": \"git\", \"is_private\": \"true\",\
+         \"fork_policy\": \"no_public_forks\" }'"
+
+        os.system(command % (self.user, self.passwd, self.group, self.slug))
+
+    def get_url(self):
+        return "git@bitbucket.org:%s/%s.git" % (self.group, self.slug)
 
 
-command = "curl -X POST -u %s:%s -v -H \
-\"Content-Type: application/json\" \
-https://api.bitbucket.org/2.0/repositories/%s/%s \
--d '{\"scm\": \"git\", \"is_private\": \"true\",\
- \"fork_policy\": \"no_public_forks\" }'"
-
-
-os.system(command % (user, passwd, group, slug))
+if __name__ == '__main__':
+    bitbucket = Bitbucket()
+    print bitbucket.get_url()
