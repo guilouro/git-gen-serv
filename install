@@ -1,13 +1,21 @@
-#!/bin/bash 
+#!/bin/bash
 
-read -p "Project name: " name
+read -p "Project name (CamelCase): " name
+read -p "Slug (Ex: project-name): " slug
+read -p "Bitbucket Group: " group
+read -p "Bitbucket user: " user
+read -p "Bitbucket password: " pass
 
-git clone https://github.com/guilouro/git-gen-serv.git .
+# git clone https://github.com/guilouro/git-gen-serv.git .
 
-rm -rf .git 
+# rm -rf .git
 
-rm -rf README.md
+# rm -rf README.md
 
-python gitgen.py $name
+# python gitgen.py $name
 
-rm -f gitgen.py install
+# rm -f gitgen.py install
+
+curl -X POST -u $user:$pass -v -H \
+"Content-Type: application/json" https://api.bitbucket.org/2.0/repositories/$group/$slug \
+-d '{"scm": "git", "is_private": "true", "fork_policy": "no_public_forks" }'
