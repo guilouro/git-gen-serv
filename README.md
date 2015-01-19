@@ -17,8 +17,8 @@ $ git clone https://github.com/guilouro/git-gen-serv.git .
 $ python bitckucket.py
 ...
 ...
-$ Slug (Ex: project-name): //Slug for your project
-$ Bitbucket Group: //Your group or username
-$ Bitbucket user: //Your username bitckucket
-$ Bitbucket password: //Your password bitckucket
+$ Slug (Ex: project-name): # Slug for your project
+$ Bitbucket Group: # Your group or username
+$ Bitbucket user: # Your username bitckucket
+$ Bitbucket password: # Your password bitckucket
 ```
