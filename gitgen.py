@@ -30,7 +30,6 @@ if not os.makedirs(git):
     print " --- success"
 
 paths = {
-    'home': os.path.abspath('.'),
     'dev': os.path.abspath('dev'),
     'git': os.path.abspath(git),
 }
