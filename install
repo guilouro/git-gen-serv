@@ -6,7 +6,7 @@ git clone https://github.com/guilouro/git-gen-serv.git .
 
 rm -rf .git
 
-rm -rf .gitignore
+rm .gitignore
 
 rm -rf README.md
 
