@@ -6,8 +6,12 @@ git clone https://github.com/guilouro/git-gen-serv.git .
 
 rm -rf .git
 
+rm .gitignore
+
 rm -rf README.md
 
 python gitgen.py $name
 
 rm -f gitgen.py install
+
+rm -rf bitbucket.py
