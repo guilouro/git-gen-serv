@@ -30,4 +30,6 @@ class Bitbucket:
 
 if __name__ == '__main__':
     bitbucket = Bitbucket()
-    print bitbucket.get_url()
+    remote = raw_input("\nYour remote: ")
+    os.system("git remote add %s %s" % (remote, bitbucket.get_url()))
+    # print bitbucket.get_url()
