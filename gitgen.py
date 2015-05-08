@@ -45,7 +45,7 @@ os.chdir(paths['hooks'])
 with open('post-receive', 'w') as f:
     f.write(postreceive)
 
-os.chmod('post-receive', '744')
+os.chmod('post-receive', 744)
 
 os.chdir(paths['dev'])
 os.system('git init')
