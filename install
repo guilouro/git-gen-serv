@@ -14,4 +14,4 @@ python gitgen.py $name
 
 rm -f gitgen.py install
 
-rm -rf bitbucket.py
+rm -rf bitbucket.py*
