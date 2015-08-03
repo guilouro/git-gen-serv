@@ -1,3 +1,5 @@
+[![Code Health](https://landscape.io/github/guilouro/git-gen-serv/master/landscape.svg?style=flat)](https://landscape.io/github/guilouro/git-gen-serv/master)
+
 ## Git Generator Files
 ------
 
