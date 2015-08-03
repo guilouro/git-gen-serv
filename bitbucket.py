@@ -5,7 +5,7 @@ import getpass
 import os
 
 
-class Bitbucket:
+class Bitbucket(object):
 
     def __init__(self):
         """
